@@ -1,0 +1,288 @@
+QSaveFile
+Functions¶
+    def cancelWriting ()
+    def commit ()
+    def directWriteFallback ()
+    def setDirectWriteFallback (enabled)
+    def setFileName (name)
+
+    
+QSemaphore
+Functions¶
+    def acquire ([n=1])
+    def available ()
+    def release ([n=1])
+    def tryAcquire ([n=1])
+    def tryAcquire (n, timeout)
+
+
+QSemaphoreReleaser
+Functions¶
+    def cancel ()
+    def semaphore ()
+    def swap (other)
+
+
+QSequentialAnimationGroup
+Functions¶
+    def addPause (msecs)
+    def currentAnimation ()
+    def currentAnimationChanged (current)
+    def insertPause (index, msecs)
+
+
+QSettings
+Functions¶
+    def allKeys ()
+    def applicationName ()
+    def beginGroup (prefix)
+    def beginReadArray (prefix)
+    def beginWriteArray (prefix[, size=-1])
+    def childGroups ()
+    def childKeys ()
+    def clear ()
+    def contains (key)
+    def endArray ()
+    def endGroup ()
+    def fallbacksEnabled ()
+    def fileName ()
+    def format ()
+    def group ()
+    def isAtomicSyncRequired ()
+    def isWritable ()
+    def organizationName ()
+    def remove (key)
+    def scope ()
+    def setArrayIndex (i)
+    def setAtomicSyncRequired (enable)
+    def setFallbacksEnabled (b)
+    def setValue (key, value)
+    def status ()
+    def sync ()
+    def value (arg__1[, defaultValue=0[, type=0]])
+Static functions¶
+    def defaultFormat ()
+    def setDefaultFormat (format)
+    def setPath (format, scope, path)
+
+
+QSignalBlocker
+Functions¶
+    def reblock ()
+    def unblock ()
+
+
+QSignalMapper
+Functions¶
+    def map ()
+    def map (sender)
+    def mappedInt (arg__1)
+    def mappedObject (arg__1)
+    def mappedString (arg__1)
+    def mapping (id)
+    def mapping (object)
+    def mapping (text)
+    def removeMappings (sender)
+    def setMapping (sender, id)
+    def setMapping (sender, object)
+    def setMapping (sender, text)
+
+
+QSize
+Functions¶
+    def __add__ (, s2)
+    def __div__ (, c)
+    def __eq__ (, s2)
+    def __iadd__ (arg__1)
+    def __idiv__ (c)
+    def __imul__ (c)
+    def __isub__ (arg__1)
+    def __mul__ (, c)
+    def __mul__ (c)
+    def __ne__ (, s2)
+    def __reduce__ ()
+    def __repr__ ()
+    def __sub__ (, s2)
+    def boundedTo (arg__1)
+    def expandedTo (arg__1)
+    def grownBy (m)
+    def height ()
+    def isEmpty ()
+    def isNull ()
+    def isValid ()
+    def scale (s, mode)
+    def scale (w, h, mode)
+    def scaled (s, mode)
+    def scaled (w, h, mode)
+    def setHeight (h)
+    def setWidth (w)
+    def shrunkBy (m)
+    def toTuple ()
+    def transpose ()
+    def transposed ()
+    def width ()
+
+
+QSizeF
+Functions¶
+    def __add__ (, s2)
+    def __div__ (, c)
+    def __eq__ (, s2)
+    def __iadd__ (arg__1)
+    def __idiv__ (c)
+    def __imul__ (c)
+    def __isub__ (arg__1)
+    def __mul__ (, c)
+    def __mul__ (c)
+    def __ne__ (, s2)
+    def __reduce__ ()
+    def __repr__ ()
+    def __sub__ (, s2)
+    def boundedTo (arg__1)
+    def expandedTo (arg__1)
+    def grownBy (m)
+    def height ()
+    def isEmpty ()
+    def isNull ()
+    def isValid ()
+    def scale (s, mode)
+    def scale (w, h, mode)
+    def scaled (s, mode)
+    def scaled (w, h, mode)
+    def setHeight (h)
+    def setWidth (w)
+    def shrunkBy (m)
+    def toSize ()
+    def toTuple ()
+    def transpose ()
+    def transposed ()
+    def width ()
+
+
+QSocketDescriptor
+Functions¶
+    def __eq__ (, rhs)
+    def __ne__ (, rhs)
+    def isValid ()
+
+
+QSocketNotifier
+Functions¶
+    def isEnabled ()
+    def setEnabled (arg__1)
+    def socket ()
+    def type ()
+
+
+QSortFilterProxyModel
+Functions¶
+    def autoAcceptChildRows ()
+    def autoAcceptChildRowsChanged (autoAcceptChildRows)
+    def dynamicSortFilter ()
+    def dynamicSortFilterChanged (dynamicSortFilter)
+    def filterCaseSensitivity ()
+    def filterCaseSensitivityChanged (filterCaseSensitivity)
+    def filterKeyColumn ()
+    def filterRegularExpression ()
+    def filterRole ()
+    def filterRoleChanged (filterRole)
+    def invalidate ()
+    def invalidateColumnsFilter ()
+    def invalidateFilter ()
+    def invalidateRowsFilter ()
+    def isRecursiveFilteringEnabled ()
+    def isSortLocaleAware ()
+    def recursiveFilteringEnabledChanged (recursiveFilteringEnabled)
+    def setAutoAcceptChildRows (accept)
+    def setDynamicSortFilter (enable)
+    def setFilterCaseSensitivity (cs)
+    def setFilterFixedString (pattern)
+    def setFilterKeyColumn (column)
+    def setFilterRegularExpression (pattern)
+    def setFilterRegularExpression (regularExpression)
+    def setFilterRole (role)
+    def setFilterWildcard (pattern)
+    def setRecursiveFilteringEnabled (recursive)
+    def setSortCaseSensitivity (cs)
+    def setSortLocaleAware (on)
+    def setSortRole (role)
+    def sortCaseSensitivity ()
+    def sortCaseSensitivityChanged (sortCaseSensitivity)
+    def sortColumn ()
+    def sortLocaleAwareChanged (sortLocaleAware)
+    def sortOrder ()
+    def sortRole ()
+    def sortRoleChanged (sortRole)
+Virtual functions¶
+    def filterAcceptsColumn (source_column, source_parent)
+    def filterAcceptsRow (source_row, source_parent)
+    def lessThan (source_left, source_right)
+
+
+QStandardPaths
+Static functions¶
+    def displayName (type)
+    def findExecutable (executableName[, paths=list()])
+    def isTestModeEnabled ()
+    def locate (type, fileName[, options=QStandardPaths.LocateFile])
+    def locateAll (type, fileName[, options=QStandardPaths.LocateFile])
+    def setTestModeEnabled (testMode)
+    def standardLocations (type)
+    def writableLocation (type)
+
+
+QStorageInfo
+Functions¶
+    def __eq__ (, second)
+    def __ne__ (, second)
+    def blockSize ()
+    def bytesAvailable ()
+    def bytesFree ()
+    def bytesTotal ()
+    def device ()
+    def displayName ()
+    def fileSystemType ()
+    def isReadOnly ()
+    def isReady ()
+    def isRoot ()
+    def isValid ()
+    def name ()
+    def refresh ()
+    def rootPath ()
+    def setPath (path)
+    def subvolume ()
+    def swap (other)
+Static functions¶
+    def mountedVolumes ()
+    def root ()
+
+
+QSysInfo
+Static functions¶
+    def bootUniqueId ()
+    def buildAbi ()
+    def buildCpuArchitecture ()
+    def currentCpuArchitecture ()
+    def kernelType ()
+    def kernelVersion ()
+    def machineHostName ()
+    def machineUniqueId ()
+    def prettyProductName ()
+    def productType ()
+    def productVersion ()
+
+
+QSystemSemaphore
+Functions¶
+    def acquire ()
+    def error ()
+    def errorString ()
+    def key ()
+    def release ([n=1])
+    def setKey (key[, initialValue=0[, mode=Open]])
+
+
+QStringListModel
+Functions¶
+    def setStringList (strings)
+    def stringList ()
