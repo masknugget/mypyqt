@@ -1,0 +1,178 @@
+Basic modules
+    QtCore
+        
+    QtGui
+        
+    QtWidgets
+
+
+QML and Qt Quick
+    QtQml
+        
+    QtQuick
+        
+    QtQuickWidgets
+
+QAbstractAnimation
+    def currentLoop ()
+    def currentLoopChanged (currentLoop)
+    def currentLoopTime ()
+    def currentTime ()
+    def direction ()
+    def directionChanged (arg__1)
+    def finished ()
+    def group ()
+    def loopCount ()
+    def pause ()
+    def resume ()
+    def setCurrentTime (msecs)
+    def setDirection (direction)
+    def setLoopCount (loopCount)
+    def setPaused (arg__1)
+    def start ([policy=KeepWhenStopped])
+    def state ()
+    def stateChanged (newState, oldState)
+    def stop ()
+    def totalDuration ()
+
+
+
+    def duration ()
+    def updateCurrentTime (currentTime)
+    def updateDirection (direction)
+    def updateState (newState, oldState)
+
+
+
+
+QAbstractEventDispatcher
+    Functions¶
+        def aboutToBlock ()
+        def awake ()
+        def filterNativeEvent (eventType, message, result)
+        def installNativeEventFilter (filterObj)
+        def registerTimer (interval, timerType, object)
+        def removeNativeEventFilter (filterObj)
+
+    Virtual functions¶
+        def closingDown ()
+        def interrupt ()
+        def processEvents (flags)
+        def registerSocketNotifier (notifier)
+        def registerTimer (timerId, interval, timerType, object)
+        def registeredTimers (object)
+        def remainingTime (timerId)
+        def startingUp ()
+        def unregisterSocketNotifier (notifier)
+        def unregisterTimer (timerId)
+        def unregisterTimers (object)
+        def wakeUp ()
+
+    Static functions¶
+        def instance ([thread=None])
+
+
+
+QAbstractItemModel
+
+    Functions¶
+        def beginInsertColumns (parent, first, last)
+        def beginInsertRows (parent, first, last)
+        def beginMoveColumns (sourceParent, sourceFirst, sourceLast, destinationParent, destinationColumn)
+        def beginMoveRows (sourceParent, sourceFirst, sourceLast, destinationParent, destinationRow)
+        def beginRemoveColumns (parent, first, last)
+        def beginRemoveRows (parent, first, last)
+        def beginResetModel ()
+        def changePersistentIndex (from, to)
+        def changePersistentIndexList (from, to)
+        def checkIndex (index[, options=CheckIndexOption.NoOption])
+        def createIndex (row, column, ptr)
+        def createIndex (row, column[, id=0])
+        def dataChanged (topLeft, bottomRight[, roles=list()])
+        def decodeData (row, column, parent, stream)
+        def encodeData (indexes, stream)
+        def endInsertColumns ()
+        def endInsertRows ()
+        def endMoveColumns ()
+        def endMoveRows ()
+        def endRemoveColumns ()
+        def endRemoveRows ()
+        def endResetModel ()
+        def hasIndex (row, column[, parent=QModelIndex()])
+        def headerDataChanged (orientation, first, last)
+        def insertColumn (column[, parent=QModelIndex()])
+        def insertRow (row[, parent=QModelIndex()])
+        def layoutAboutToBeChanged ([parents=list()[, hint=QAbstractItemModel.NoLayoutChangeHint]])
+        def layoutChanged ([parents=list()[, hint=QAbstractItemModel.NoLayoutChangeHint]])
+        def moveColumn (sourceParent, sourceColumn, destinationParent, destinationChild)
+        def moveRow (sourceParent, sourceRow, destinationParent, destinationChild)
+        def persistentIndexList ()
+        def removeColumn (column[, parent=QModelIndex()])
+        def removeRow (row[, parent=QModelIndex()])
+
+    Virtual functions¶
+        def buddy (index)
+        def canDropMimeData (data, action, row, column, parent)
+        def canFetchMore (parent)
+        def clearItemData (index)
+        def columnCount ([parent=QModelIndex()])
+        def data (index[, role=Qt.DisplayRole])
+        def dropMimeData (data, action, row, column, parent)
+        def fetchMore (parent)
+        def flags (index)
+        def hasChildren ([parent=QModelIndex()])
+        def headerData (section, orientation[, role=Qt.DisplayRole])
+        def index (row, column[, parent=QModelIndex()])
+        def insertColumns (column, count[, parent=QModelIndex()])
+        def insertRows (row, count[, parent=QModelIndex()])
+        def itemData (index)
+        def match (start, role, value[, hits=1[, flags=Qt.MatchFlags(Qt.MatchStartsWith|Qt.MatchWrap)]])
+        def mimeData (indexes)
+        def mimeTypes ()
+        def moveColumns (sourceParent, sourceColumn, count, destinationParent, destinationChild)
+        def moveRows (sourceParent, sourceRow, count, destinationParent, destinationChild)
+        def parent (child)
+        def removeColumns (column, count[, parent=QModelIndex()])
+        def removeRows (row, count[, parent=QModelIndex()])
+        def resetInternalData ()
+        def revert ()
+        def roleNames ()
+        def rowCount ([parent=QModelIndex()])
+        def setData (index, value[, role=Qt.EditRole])
+        def setHeaderData (section, orientation, value[, role=Qt.EditRole])
+        def setItemData (index, roles)
+        def sibling (row, column, idx)
+        def sort (column[, order=Qt.AscendingOrder])
+        def span (index)
+        def submit ()
+        def supportedDragActions ()
+        def supportedDropActions ()
+
+QAbstractListModel
+QAbstractNativeEventFilter
+QAbstractTableModel
+
+QAnimationGroup
+
+    Functions¶
+        def addAnimation (animation)
+        def animationAt (index)
+        def animationCount ()
+        def clear ()
+        def indexOfAnimation (animation)
+        def insertAnimation (index, animation)
+        def removeAnimation (animation)
+        def takeAnimation (index)
+
+
+QAbstractProxyModel
+    Functions¶
+        def sourceModel ()
+
+    Virtual functions¶
+        def mapFromSource (sourceIndex)
+        def mapSelectionFromSource (selection)
+        def mapSelectionToSource (selection)
+        def mapToSource (proxyIndex)
+        def setSourceModel (sourceModel)
+
