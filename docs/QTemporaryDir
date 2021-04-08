@@ -1,0 +1,288 @@
+QTemporaryDir
+Functions¶
+    def autoRemove ()
+    def errorString ()
+    def filePath (fileName)
+    def isValid ()
+    def path ()
+    def remove ()
+    def setAutoRemove (b)
+
+
+QTemporaryFile
+Functions¶
+    def autoRemove ()
+    def fileTemplate ()
+    def open ()
+    def setAutoRemove (b)
+    def setFileTemplate (name)
+Static functions¶
+    def createNativeFile (file)
+    def createNativeFile (fileName)
+
+
+QTextBoundaryFinder
+Functions¶
+    def boundaryReasons ()
+    def isAtBoundary ()
+    def isValid ()
+    def position ()
+    def setPosition (position)
+    def string ()
+    def toEnd ()
+    def toNextBoundary ()
+    def toPreviousBoundary ()
+    def toStart ()
+    def type ()
+
+
+QTextStream
+Functions¶
+    def __lshift__ (, arg__2)
+    def __lshift__ (, m)
+    def __lshift__ (array)
+    def __lshift__ (ch)
+    def __lshift__ (ch)
+    def __lshift__ (f)
+    def __lshift__ (i)
+    def __lshift__ (i)
+    def __lshift__ (s)
+    def __lshift__ (s)
+    def __rshift__ (array)
+    def atEnd ()
+    def autoDetectUnicode ()
+    def device ()
+    def fieldAlignment ()
+    def fieldWidth ()
+    def flush ()
+    def generateByteOrderMark ()
+    def integerBase ()
+    def locale ()
+    def numberFlags ()
+    def padChar ()
+    def pos ()
+    def read (maxlen)
+    def readAll ()
+    def readLine ([maxlen=0])
+    def realNumberNotation ()
+    def realNumberPrecision ()
+    def reset ()
+    def resetStatus ()
+    def seek (pos)
+    def setAutoDetectUnicode (enabled)
+    def setDevice (device)
+    def setFieldAlignment (alignment)
+    def setFieldWidth (width)
+    def setGenerateByteOrderMark (generate)
+    def setIntegerBase (base)
+    def setLocale (locale)
+    def setNumberFlags (flags)
+    def setPadChar (ch)
+    def setRealNumberNotation (notation)
+    def setRealNumberPrecision (precision)
+    def setStatus (status)
+    def skipWhiteSpace ()
+    def status ()
+    def string ()
+
+
+QTextStreamManipulator
+Functions¶
+    def exec_ (s)
+
+
+QThread
+Functions¶
+    def eventDispatcher ()
+    def exec_ ()
+    def exit ([retcode=0])
+    def isFinished ()
+    def isInterruptionRequested ()
+    def isRunning ()
+    def loopLevel ()
+    def priority ()
+    def quit ()
+    def requestInterruption ()
+    def setEventDispatcher (eventDispatcher)
+    def setPriority (priority)
+    def setStackSize (stackSize)
+    def stackSize ()
+    def start ([priority=InheritPriority])
+    def terminate ()
+    def wait ([deadline=QDeadlineTimer(QDeadlineTimer.Forever)])
+    def wait (time)
+Virtual functions¶
+    def run ()
+Static functions¶
+    def currentThread ()
+    def idealThreadCount ()
+    def msleep (arg__1)
+    def setTerminationEnabled ([enabled=true])
+    def sleep (arg__1)
+    def usleep (arg__1)
+    def yieldCurrentThread ()
+
+
+QThreadPool
+Functions¶
+    def activeThreadCount ()
+    def clear ()
+    def contains (thread)
+    def expiryTimeout ()
+    def maxThreadCount ()
+    def releaseThread ()
+    def reserveThread ()
+    def setExpiryTimeout (expiryTimeout)
+    def setMaxThreadCount (maxThreadCount)
+    def setStackSize (stackSize)
+    def stackSize ()
+    def start (runnable[, priority=0])
+    def tryStart (runnable)
+    def tryTake (runnable)
+    def waitForDone ([msecs=-1])
+Static functions¶
+    def globalInstance ()
+
+
+QTime
+Functions¶
+    def __eq__ (, rhs)
+    def __ge__ (, rhs)
+    def __gt__ (, rhs)
+    def __le__ (, rhs)
+    def __lt__ (, rhs)
+    def __ne__ (, rhs)
+    def __reduce__ ()
+    def __repr__ ()
+    def addMSecs (ms)
+    def addSecs (secs)
+    def hour ()
+    def isNull ()
+    def isValid ()
+    def minute ()
+    def msec ()
+    def msecsSinceStartOfDay ()
+    def msecsTo (t)
+    def second ()
+    def secsTo (t)
+    def setHMS (h, m, s[, ms=0])
+    def toPython ()
+    def toString ([f=Qt.TextDate])
+    def toString (format)
+    def toString (format)
+Static functions¶
+    def currentTime ()
+    def fromMSecsSinceStartOfDay (msecs)
+    def fromString (string, format)
+    def fromString (string, format)
+    def fromString (string, format)
+    def fromString (string[, format=Qt.TextDate])
+    def fromString (string[, format=Qt.TextDate])
+    def isValid (h, m, s[, ms=0])
+
+
+QTimeLine
+Functions¶
+    def currentFrame ()
+    def currentTime ()
+    def currentValue ()
+    def direction ()
+    def duration ()
+    def easingCurve ()
+    def endFrame ()
+    def frameForTime (msec)
+    def loopCount ()
+    def resume ()
+    def setCurrentTime (msec)
+    def setDirection (direction)
+    def setDuration (duration)
+    def setEasingCurve (curve)
+    def setEndFrame (frame)
+    def setFrameRange (startFrame, endFrame)
+    def setLoopCount (count)
+    def setPaused (paused)
+    def setStartFrame (frame)
+    def setUpdateInterval (interval)
+    def start ()
+    def startFrame ()
+    def state ()
+    def stop ()
+    def toggleDirection ()
+    def updateInterval ()
+Virtual functions¶
+    def valueForTime (msec)
+
+
+QTimeZone
+Functions¶
+    def __eq__ (other)
+    def __ne__ (other)
+    def abbreviation (atDateTime)
+    def comment ()
+    def country ()
+    def daylightTimeOffset (atDateTime)
+    def displayName (atDateTime[, nameType=QTimeZone.DefaultName[, locale=QLocale()]])
+    def displayName (timeType[, nameType=QTimeZone.DefaultName[, locale=QLocale()]])
+    def hasDaylightTime ()
+    def hasTransitions ()
+    def id ()
+    def isDaylightTime (atDateTime)
+    def isValid ()
+    def nextTransition (afterDateTime)
+    def offsetData (forDateTime)
+    def offsetFromUtc (atDateTime)
+    def previousTransition (beforeDateTime)
+    def standardTimeOffset (atDateTime)
+    def swap (other)
+    def transitions (fromDateTime, toDateTime)
+Static functions¶
+    def availableTimeZoneIds ()
+    def availableTimeZoneIds (country)
+    def availableTimeZoneIds (offsetSeconds)
+    def ianaIdToWindowsId (ianaId)
+    def isTimeZoneIdAvailable (ianaId)
+    def systemTimeZone ()
+    def systemTimeZoneId ()
+    def utc ()
+    def windowsIdToDefaultIanaId (windowsId)
+    def windowsIdToDefaultIanaId (windowsId, country)
+    def windowsIdToIanaIds (windowsId)
+    def windowsIdToIanaIds (windowsId, country)
+
+
+QTimer
+Functions¶
+    def interval ()
+    def isActive ()
+    def isSingleShot ()
+    def remainingTime ()
+    def setInterval (msec)
+    def setSingleShot (singleShot)
+    def setTimerType (atype)
+    def start ()
+    def start (msec)
+    def stop ()
+    def timerId ()
+    def timerType ()
+Static functions¶
+    def singleShot (arg__1, arg__2)
+    def singleShot (msec, receiver, member)
+    def singleShot (msec, timerType, receiver, member)
+
+QTimerEvent
+
+
+QTranslator
+Functions¶
+    def filePath ()
+    def language ()
+    def load (data[, directory=””])
+    def load (filename[, directory=””[, search_delimiters=””[, suffix=””]]])
+    def load (locale, filename[, prefix=””[, directory=””[, suffix=””]]])
+Virtual functions¶
+    def isEmpty ()
+    def translate (context, sourceText[, disambiguation=None[, n=-1]])
+    
+QTransposeProxyModel
+
+TimerInfo
