@@ -1,0 +1,85 @@
+G
+
+    QGeoCodeReply
+
+    QGeoCodingManager
+
+    QGeoCodingManagerEngine
+
+    QGeoManeuver
+
+    QGeoRoute
+
+    QGeoRouteReply
+
+    QGeoRouteRequest
+
+    QGeoRouteSegment
+
+    QGeoRoutingManager
+
+    QGeoRoutingManagerEngine
+
+    QGeoServiceProvider
+
+    QGeoServiceProviderFactory
+
+    QGeoServiceProviderFactoryV2
+
+P
+
+    QPlace
+
+    QPlaceAttribute
+
+    QPlaceCategory
+
+    QPlaceContactDetail
+
+    QPlaceContent
+
+    QPlaceContentReply
+
+
+
+    QPlaceContentRequest
+
+    QPlaceDetailsReply
+
+    QPlaceEditorial
+
+    QPlaceIcon
+
+    QPlaceIdReply
+
+    QPlaceImage
+
+    QPlaceManager
+
+    QPlaceManagerEngine
+
+    QPlaceMatchReply
+
+    QPlaceMatchRequest
+
+    QPlaceProposedSearchResult
+
+    QPlaceRatings
+
+    QPlaceReply
+
+    QPlaceResult
+
+    QPlaceReview
+
+    QPlaceSearchReply
+
+    QPlaceSearchRequest
+
+    QPlaceSearchResult
+
+    QPlaceSearchSuggestionReply
+
+    QPlaceSupplier
+
+    QPlaceUser

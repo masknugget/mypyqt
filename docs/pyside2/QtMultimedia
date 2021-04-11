@@ -1,0 +1,199 @@
+A
+
+    QAbstractAudioDeviceInfo
+
+    QAbstractAudioInput
+
+    QAbstractAudioOutput
+
+    QAbstractVideoBuffer
+
+    QAbstractVideoFilter
+
+    QAbstractVideoSurface
+
+    QAudio
+
+    QAudioBuffer
+
+    QAudioDecoder
+
+    QAudioDecoderControl
+
+    QAudioDeviceInfo
+
+    QAudioEncoderSettings
+
+    QAudioEncoderSettingsControl
+
+    QAudioFormat
+
+    QAudioInput
+
+    QAudioInputSelectorControl
+
+    QAudioOutput
+
+    QAudioOutputSelectorControl
+
+    QAudioProbe
+
+    QAudioRecorder
+
+    QAudioRoleControl
+
+C
+
+    QCamera
+
+    QCameraCaptureBufferFormatControl
+
+    QCameraCaptureDestinationControl
+
+    QCameraControl
+
+    QCameraExposure
+
+    QCameraExposureControl
+
+    QCameraFeedbackControl
+
+    QCameraFlashControl
+
+    QCameraFocus
+
+    QCameraFocusControl
+
+    QCameraFocusZone
+
+    QCameraImageCapture
+
+    QCameraImageCaptureControl
+
+    QCameraImageProcessing
+
+    QCameraImageProcessingControl
+
+    QCameraInfo
+
+    QCameraInfoControl
+
+    QCameraLocksControl
+
+    QCameraViewfinderSettings
+
+    QCameraViewfinderSettingsControl
+
+    QCameraViewfinderSettingsControl2
+
+    QCameraZoomControl
+
+    QCustomAudioRoleControl
+
+F
+
+    FrameRateRange
+
+I
+
+    QImageEncoderControl
+
+
+
+    QImageEncoderSettings
+
+M
+
+    QMediaAudioProbeControl
+
+    QMediaAvailabilityControl
+
+    QMediaBindableInterface
+
+    QMediaContainerControl
+
+    QMediaContent
+
+    QMediaControl
+
+    QMediaGaplessPlaybackControl
+
+    QMediaNetworkAccessControl
+
+    QMediaObject
+
+    QMediaPlayer
+
+    QMediaPlayerControl
+
+    QMediaPlaylist
+
+    QMediaRecorder
+
+    QMediaRecorderControl
+
+    QMediaResource
+
+    QMediaService
+
+    QMediaServiceCameraInfoInterface
+
+    QMediaServiceDefaultDeviceInterface
+
+    QMediaServiceFeaturesInterface
+
+    QMediaServiceProviderHint
+
+    QMediaServiceSupportedDevicesInterface
+
+    QMediaServiceSupportedFormatsInterface
+
+    QMediaStreamsControl
+
+    QMediaTimeInterval
+
+    QMediaTimeRange
+
+    QMediaVideoProbeControl
+
+    QMetaDataReaderControl
+
+    QMetaDataWriterControl
+
+    QMultimedia
+
+R
+
+    QRadioData
+
+    QRadioDataControl
+
+    QRadioTuner
+
+    QRadioTunerControl
+
+S
+
+    QSound
+
+    QSoundEffect
+
+V
+
+    QVideoDeviceSelectorControl
+
+    QVideoEncoderSettings
+
+    QVideoEncoderSettingsControl
+
+    QVideoFilterRunnable
+
+    QVideoFrame
+
+    QVideoProbe
+
+    QVideoRendererControl
+
+    QVideoSurfaceFormat
+
+    QVideoWindowControl

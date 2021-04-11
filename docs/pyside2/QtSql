@@ -1,0 +1,31 @@
+S
+
+    QSql
+
+    QSqlDatabase
+
+    QSqlDriver
+
+    QSqlDriverCreatorBase
+
+    QSqlError
+
+    QSqlField
+
+    QSqlIndex
+
+
+
+    QSqlQuery
+
+    QSqlQueryModel
+
+    QSqlRecord
+
+    QSqlRelation
+
+    QSqlRelationalTableModel
+
+    QSqlResult
+
+    QSqlTableModel

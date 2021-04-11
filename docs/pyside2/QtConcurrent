@@ -1,0 +1,15 @@
+F
+
+    QFutureQString
+
+    QFutureVoid
+
+    QFutureWatcherQString
+
+
+
+    QFutureWatcherVoid
+
+t
+
+    QtConcurrent

@@ -1,0 +1,167 @@
+A
+
+    QAccelerometer
+
+    QAccelerometerFilter
+
+    QAccelerometerReading
+
+    QAltimeter
+
+    QAltimeterFilter
+
+    QAltimeterReading
+
+    QAmbientLightFilter
+
+    QAmbientLightReading
+
+    QAmbientLightSensor
+
+    QAmbientTemperatureFilter
+
+    QAmbientTemperatureReading
+
+    QAmbientTemperatureSensor
+
+C
+
+    QCompass
+
+    QCompassFilter
+
+    QCompassReading
+
+D
+
+    QDistanceFilter
+
+    QDistanceReading
+
+    QDistanceSensor
+
+G
+
+    QGyroscope
+
+    QGyroscopeFilter
+
+    QGyroscopeReading
+
+H
+
+    QHolsterFilter
+
+    QHolsterReading
+
+    QHolsterSensor
+
+    QHumidityFilter
+
+    QHumidityReading
+
+    QHumiditySensor
+
+I
+
+    QIRProximityFilter
+
+    QIRProximityReading
+
+    QIRProximitySensor
+
+L
+
+    QLidFilter
+
+    QLidReading
+
+    QLidSensor
+
+    QLightFilter
+
+    QLightReading
+
+
+
+    QLightSensor
+
+M
+
+    QMagnetometer
+
+    QMagnetometerFilter
+
+    QMagnetometerReading
+
+O
+
+    QOrientationFilter
+
+    QOrientationReading
+
+    QOrientationSensor
+
+P
+
+    QPressureFilter
+
+    QPressureReading
+
+    QPressureSensor
+
+    QProximityFilter
+
+    QProximityReading
+
+    QProximitySensor
+
+R
+
+    QRotationFilter
+
+    QRotationReading
+
+    QRotationSensor
+
+S
+
+    QSensor
+
+    QSensorBackend
+
+    QSensorBackendFactory
+
+    QSensorChangesInterface
+
+    QSensorFilter
+
+    QSensorGestureManager
+
+    QSensorGesturePluginInterface
+
+    QSensorGestureRecognizer
+
+    QSensorManager
+
+    QSensorPluginInterface
+
+    QSensorReading
+
+T
+
+    QTapFilter
+
+    QTapReading
+
+    QTapSensor
+
+    QTiltFilter
+
+    QTiltReading
+
+    QTiltSensor
+
+q
+
+    qoutputrange

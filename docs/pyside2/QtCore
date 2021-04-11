@@ -1,0 +1,403 @@
+# https://doc.qt.io/qtforpython-5/PySide2/QtCore/index.html#module-PySide2.QtCore
+
+PySide2.QtCore¶
+
+A
+
+    QAbstractAnimation
+
+    QAbstractEventDispatcher
+
+    QAbstractItemModel
+
+    QAbstractListModel
+
+    QAbstractNativeEventFilter
+
+    QAbstractProxyModel
+
+    QAbstractState
+
+    QAbstractTableModel
+
+    QAbstractTransition
+
+    QAnimationGroup
+
+B
+
+    QBasicMutex
+
+    QBasicTimer
+
+    QBitArray
+
+    QBuffer
+
+    QByteArray
+
+    QByteArrayMatcher
+
+C
+
+    ClassInfo
+
+    Connection
+
+    ConverterState
+
+    QCalendar
+
+    QCborArray
+
+    QCborError
+
+    QCborMap
+
+    QCborParserError
+
+    QCborStreamReader
+
+    QCborStreamWriter
+
+    QCborStringResultByteArray
+
+    QCborStringResultString
+
+    QCborValue
+
+    QChildEvent
+
+    QCollator
+
+    QCollatorSortKey
+
+    QCommandLineOption
+
+    QCommandLineParser
+
+    QConcatenateTablesProxyModel
+
+    QCoreApplication
+
+    QCryptographicHash
+
+D
+
+    QDataStream
+
+    QDate
+
+    QDateTime
+
+    QDeadlineTimer
+
+    QDir
+
+    QDirIterator
+
+    QDynamicPropertyChangeEvent
+
+E
+
+    QEasingCurve
+
+    QElapsedTimer
+
+    QEnum/QFlag
+
+    QEvent
+
+    QEventLoop
+
+    QEventTransition
+
+F
+
+    FromBase64Result
+
+    QFactoryInterface
+
+    QFile
+
+    QFileDevice
+
+    QFileInfo
+
+    QFileSelector
+
+    QFileSystemWatcher
+
+    QFinalState
+
+    QFutureInterfaceBase
+
+G
+
+    QGenericArgument
+
+    QGenericReturnArgument
+
+H
+
+    QHistoryState
+
+I
+
+    QIODevice
+
+    QIdentityProxyModel
+
+    QItemSelection
+
+    QItemSelectionModel
+
+    QItemSelectionRange
+
+J
+
+    QJsonArray
+
+    QJsonDocument
+
+    QJsonParseError
+
+    QJsonValue
+
+L
+
+    QLibraryInfo
+
+    QLine
+
+    QLineF
+
+    QLocale
+
+    QLockFile
+
+M
+
+    QMargins
+
+    QMarginsF
+
+    QMessageAuthenticationCode
+
+    QMessageLogContext
+
+    QMetaClassInfo
+
+    QMetaEnum
+
+    QMetaMethod
+
+    QMetaObject
+
+    QMetaProperty
+
+    QMimeData
+
+    QMimeDatabase
+
+    QMimeType
+
+
+
+    QModelIndex
+
+    QMutex
+
+    QMutexLocker
+
+O
+
+    OffsetData
+
+    QObject
+
+    QOperatingSystemVersion
+
+P
+
+    Property
+
+    QParallelAnimationGroup
+
+    QPauseAnimation
+
+    QPersistentModelIndex
+
+    QPluginLoader
+
+    QPoint
+
+    QPointF
+
+    QProcess
+
+    QProcessEnvironment
+
+    QPropertyAnimation
+
+R
+
+    QRandomGenerator
+
+    QRandomGenerator64
+
+    QReadLocker
+
+    QReadWriteLock
+
+    QRect
+
+    QRectF
+
+    QRecursiveMutex
+
+    QRegExp
+
+    QRegularExpression
+
+    QRegularExpressionMatch
+
+    QRegularExpressionMatchIterator
+
+    QResource
+
+    QRunnable
+
+S
+
+    QSaveFile
+
+    QSemaphore
+
+    QSemaphoreReleaser
+
+    QSequentialAnimationGroup
+
+    QSettings
+
+    QSignalBlocker
+
+    QSignalMapper
+
+    QSignalTransition
+
+    QSize
+
+    QSizeF
+
+    QSocketDescriptor
+
+    QSocketNotifier
+
+    QSortFilterProxyModel
+
+    QStandardPaths
+
+    QState
+
+    QStateMachine
+
+    QStorageInfo
+
+    QStringListModel
+
+    QSysInfo
+
+    QSystemSemaphore
+
+    Signal
+
+    SignalEvent
+
+    Slot
+
+T
+
+    QTemporaryDir
+
+    QTemporaryFile
+
+    QTextBoundaryFinder
+
+    QTextCodec
+
+    QTextDecoder
+
+    QTextEncoder
+
+    QTextStream
+
+    QTextStreamManipulator
+
+    QThread
+
+    QThreadPool
+
+    QTime
+
+    QTimeLine
+
+    QTimeZone
+
+    QTimer
+
+    QTimerEvent
+
+    QTranslator
+
+    QTransposeProxyModel
+
+    TimerInfo
+
+U
+
+    QUrl
+
+    QUrlQuery
+
+    QUuid
+
+V
+
+    QVariantAnimation
+
+    QVersionNumber
+
+W
+
+    QWaitCondition
+
+    QWriteLocker
+
+    WrappedEvent
+
+X
+
+    QXmlStreamAttribute
+
+    QXmlStreamAttributes
+
+    QXmlStreamEntityDeclaration
+
+    QXmlStreamEntityResolver
+
+    QXmlStreamNamespaceDeclaration
+
+    QXmlStreamNotationDeclaration
+
+    QXmlStreamReader
+
+    QXmlStreamWriter
+
+Y
+
+    YearMonthDay
+
+t
+
+    Qt

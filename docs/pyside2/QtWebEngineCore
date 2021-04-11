@@ -1,0 +1,17 @@
+W
+
+    QWebEngineCookieStore
+
+    QWebEngineHttpRequest
+
+    QWebEngineUrlRequestInfo
+
+
+
+    QWebEngineUrlRequestInterceptor
+
+    QWebEngineUrlRequestJob
+
+    QWebEngineUrlScheme
+
+    QWebEngineUrlSchemeHandler

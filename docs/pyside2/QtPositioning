@@ -1,0 +1,37 @@
+G
+
+    QGeoAddress
+
+    QGeoAreaMonitorInfo
+
+    QGeoAreaMonitorSource
+
+    QGeoCircle
+
+    QGeoCoordinate
+
+    QGeoLocation
+
+    QGeoPath
+
+    QGeoPolygon
+
+    QGeoPositionInfo
+
+
+
+    QGeoPositionInfoSource
+
+    QGeoPositionInfoSourceFactory
+
+    QGeoRectangle
+
+    QGeoSatelliteInfo
+
+    QGeoSatelliteInfoSource
+
+    QGeoShape
+
+N
+
+    QNmeaPositionInfoSource

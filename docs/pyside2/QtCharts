@@ -1,0 +1,129 @@
+A
+
+    QAbstractAxis
+
+    QAbstractBarSeries
+
+    QAbstractSeries
+
+    QAreaLegendMarker
+
+    QAreaSeries
+
+B
+
+    QBarCategoryAxis
+
+    QBarLegendMarker
+
+    QBarModelMapper
+
+    QBarSeries
+
+    QBarSet
+
+    QBoxPlotLegendMarker
+
+    QBoxPlotModelMapper
+
+    QBoxPlotSeries
+
+    QBoxSet
+
+C
+
+    QCandlestickLegendMarker
+
+    QCandlestickModelMapper
+
+    QCandlestickSeries
+
+    QCandlestickSet
+
+    QCategoryAxis
+
+    QChart
+
+    QChartView
+
+D
+
+    QDateTimeAxis
+
+H
+
+    QHBarModelMapper
+
+    QHBoxPlotModelMapper
+
+    QHCandlestickModelMapper
+
+    QHPieModelMapper
+
+    QHXYModelMapper
+
+    QHorizontalBarSeries
+
+
+
+    QHorizontalPercentBarSeries
+
+    QHorizontalStackedBarSeries
+
+L
+
+    QLegend
+
+    QLegendMarker
+
+    QLineSeries
+
+    QLogValueAxis
+
+P
+
+    QPercentBarSeries
+
+    QPieLegendMarker
+
+    QPieModelMapper
+
+    QPieSeries
+
+    QPieSlice
+
+    QPolarChart
+
+S
+
+    QScatterSeries
+
+    QSplineSeries
+
+    QStackedBarSeries
+
+V
+
+    QVBarModelMapper
+
+    QVBoxPlotModelMapper
+
+    QVCandlestickModelMapper
+
+    QVPieModelMapper
+
+    QVXYModelMapper
+
+    QValueAxis
+
+X
+
+    QXYLegendMarker
+
+    QXYModelMapper
+
+    QXYSeries
+
+t
+
+    QtCharts

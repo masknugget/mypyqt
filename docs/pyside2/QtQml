@@ -1,0 +1,61 @@
+J
+
+    QJSEngine
+
+    QJSValue
+
+    QJSValueIterator
+
+Q
+
+    QQmlAbstractUrlInterceptor
+
+    QQmlApplicationEngine
+
+    QQmlComponent
+
+    QQmlContext
+
+    QQmlDebuggingEnabler
+
+    QQmlEngine
+
+    QQmlError
+
+    QQmlExpression
+
+    QQmlExtensionInterface
+
+    QQmlExtensionPlugin
+
+
+
+    QQmlFile
+
+    QQmlFileSelector
+
+    QQmlImageProviderBase
+
+    QQmlIncubationController
+
+    QQmlIncubator
+
+    QQmlListReference
+
+    QQmlNetworkAccessManagerFactory
+
+    QQmlParserStatus
+
+    QQmlProperty
+
+    QQmlPropertyMap
+
+    QQmlPropertyValueSource
+
+    QQmlScriptString
+
+    QQmlTypesExtensionInterface
+
+t
+
+    QtQml

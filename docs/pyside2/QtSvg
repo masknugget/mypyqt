@@ -1,0 +1,13 @@
+G
+
+    QGraphicsSvgItem
+
+S
+
+    QSvgGenerator
+
+
+
+    QSvgRenderer
+
+    QSvgWidget

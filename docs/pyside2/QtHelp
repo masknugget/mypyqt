@@ -1,0 +1,39 @@
+C
+
+    QCompressedHelpInfo
+
+H
+
+    QHelpContentItem
+
+    QHelpContentModel
+
+    QHelpContentWidget
+
+    QHelpEngine
+
+    QHelpEngineCore
+
+    QHelpFilterData
+
+
+
+    QHelpFilterEngine
+
+    QHelpFilterSettingsWidget
+
+    QHelpIndexModel
+
+    QHelpIndexWidget
+
+    QHelpLink
+
+    QHelpSearchEngine
+
+    QHelpSearchQuery
+
+    QHelpSearchQueryWidget
+
+    QHelpSearchResult
+
+    QHelpSearchResultWidget

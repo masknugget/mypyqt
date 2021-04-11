@@ -1,0 +1,95 @@
+3
+
+    Q3DBars
+
+    Q3DCamera
+
+    Q3DInputHandler
+
+    Q3DLight
+
+    Q3DObject
+
+    Q3DScatter
+
+    Q3DScene
+
+    Q3DSurface
+
+    Q3DTheme
+
+A
+
+    QAbstract3DAxis
+
+    QAbstract3DGraph
+
+    QAbstract3DInputHandler
+
+    QAbstract3DSeries
+
+    QAbstractDataProxy
+
+B
+
+    QBar3DSeries
+
+    QBarDataItem
+
+    QBarDataProxy
+
+C
+
+    QCategory3DAxis
+
+    QCustom3DItem
+
+    QCustom3DLabel
+
+    QCustom3DVolume
+
+H
+
+    QHeightMapSurfaceDataProxy
+
+
+
+I
+
+    QItemModelBarDataProxy
+
+    QItemModelScatterDataProxy
+
+    QItemModelSurfaceDataProxy
+
+L
+
+    QLogValue3DAxisFormatter
+
+S
+
+    QScatter3DSeries
+
+    QScatterDataItem
+
+    QScatterDataProxy
+
+    QSurface3DSeries
+
+    QSurfaceDataItem
+
+    QSurfaceDataProxy
+
+T
+
+    QTouch3DInputHandler
+
+V
+
+    QValue3DAxis
+
+    QValue3DAxisFormatter
+
+t
+
+    QtDataVisualization
