@@ -14,6 +14,7 @@ from PySide2.QtWidgets import QApplication, QGridLayout, QLabel, QComboBox, QCom
 # sys.setdefaultencoding("utf-8")
 
 
+
 class ManageSubmit(QDialog):
     def __init__(self, parent=None):
         super(ManageSubmit, self).__init__(parent)
