@@ -1,0 +1,215 @@
+object.__new__(cls[, ...])
+object.__init__(self[, ...])
+object.__del__(self)
+
+object.__repr__(self)
+object.__str__(self)
+object.__bytes__(self)
+object.__format__(self, format_spec)
+
+object.__lt__(self, other)
+object.__le__(self, other)
+object.__eq__(self, other)
+object.__ne__(self, other)
+object.__gt__(self, other)
+object.__ge__(self, other)
+
+object.__hash__(self)
+object.__bool__(self)
+
+
+对于属性进行custom
+
+    object.__getattr__(self, name)
+        when the default attribute access fails with an AttributeError
+
+    object.__getattribute__(self, name)
+
+    object.__setattr__(self, name, value)
+    object.__delattr__(self, name)
+    object.__dir__(self)
+
+
+    import sys
+    from types import ModuleType
+
+    class VerboseModule(ModuleType):
+        def __repr__(self):
+            return f'Verbose {self.__name__}'
+
+        def __setattr__(self, attr, value):
+            print(f'Setting {attr}...')
+            super().__setattr__(attr, value)
+
+    sys.modules[__name__].__class__ = VerboseModule
+
+
+
+
+Implementing Descriptors
+
+    object.__get__(self, instance, owner)
+    object.__set__(self, instance, value)
+    object.__delete__(self, instance)
+    object.__set_name__(self, owner, name)
+
+
+    class A:
+       pass
+    descr = custom_descriptor()
+    A.attr = descr
+    descr.__set_name__(A, 'attr')
+
+
+
+对象的调用方式
+
+a.__dict__['x'], then type(a).__dict__['x'],
+
+x.__get__(a).
+a.x is transformed into the call: type(a).__dict__['x'].__get__(a, type(a)).
+A.x is transformed into the call: A.__dict__['x'].__get__(None, A).
+super(B, obj).m() searches obj.__class__.__mro__
+
+
+
+slots 比__dict__节约内存，还有weakref得看看
+
+
+
+定制化类的创建
+
+classmethod object.__init_subclass__(cls)
+    This method is called whenever the containing class is subclassed       当类发生继承时候进行
+
+
+    class Philosopher:
+        def __init_subclass__(cls, default_name, **kwargs):
+            super().__init_subclass__(**kwargs)
+            cls.default_name = default_name
+
+    class AustralianPhilosopher(Philosopher, default_name="Bruce"):
+        pass
+
+
+Metaclasses
+
+    class Meta(type):
+        pass
+
+    class MyClass(metaclass=Meta):
+        pass
+
+    class MySubclass(MyClass):
+        pass
+
+Preparing the class namespace
+    prepare
+    __prepare__
+
+
+Customizing instance and subclass checks
+    behavior of the isinstance() and issubclass() built-in functions
+
+    class.__instancecheck__(self, instance)
+    class.__subclasscheck__(self, subclass)
+
+
+Emulating generic types
+    classmethod object.__class_getitem__(cls, key)
+
+
+
+Emulating callable objects
+    object.__call__(self[, args...])
+
+
+
+Emulating container types
+    对象是一个容器的时候
+    object.__len__(self)
+    object.__length_hint__(self)
+
+        a[1:2] = b
+        a[slice(1, 2, None)] = b
+
+    object.__getitem__(self, key)
+    object.__setitem__(self, key, value)
+    object.__delitem__(self, key)
+    object.__missing__(self, key)
+    object.__iter__(self)
+    object.__reversed__(self)
+    object.__contains__(self, item)
+
+
+
+Emulating numeric types
+    object.__add__(self, other)
+    object.__sub__(self, other)
+    object.__mul__(self, other)
+    object.__matmul__(self, other)
+    object.__truediv__(self, other)
+    object.__floordiv__(self, other)
+    object.__mod__(self, other)
+    object.__divmod__(self, other)
+    object.__pow__(self, other[, modulo])
+    object.__lshift__(self, other)
+    object.__rshift__(self, other)
+    object.__and__(self, other)
+    object.__xor__(self, other)
+    object.__or__(self, other)
+
+
+With Statement Context Managers
+
+    object.__enter__(self)
+    object.__exit__(self, exc_type, exc_value, traceback)
+
+
+
+    >>> class Meta(type):
+    ...     def __getattribute__(*args):
+    ...         print("Metaclass getattribute invoked")
+    ...         return type.__getattribute__(*args)
+    ...
+    >>> class C(object, metaclass=Meta):
+    ...     def __len__(self):
+    ...         return 10
+    ...     def __getattribute__(*args):
+    ...         print("Class getattribute invoked")
+    ...         return object.__getattribute__(*args)
+    ...
+    >>> c = C()
+    >>> c.__len__()                 # Explicit lookup via instance
+    Class getattribute invoked
+    10
+    >>> type(c).__len__(c)          # Explicit lookup via type
+    Metaclass getattribute invoked
+    10
+    >>> len(c)                      # Implicit lookup
+    10
+
+
+Asynchronous Iterators
+
+    class Reader:
+        async def readline(self):
+            ...
+
+        def __aiter__(self):
+            return self
+
+        async def __anext__(self):
+            val = await self.readline()
+            if val == b'':
+                raise StopAsyncIteration
+            return val
+
+
+
+class AsyncContextManager:
+    async def __aenter__(self):
+        await log('entering context')
+
+    async def __aexit__(self, exc_type, exc, tb):
+        await log('exiting context')
