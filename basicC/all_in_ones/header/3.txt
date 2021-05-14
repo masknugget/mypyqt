@@ -1,0 +1,34 @@
+// --- Making Use of a Global Variable
+#include <iostream>
+#include "sharealike.h"
+using namespace std;
+
+int main()
+{
+    DoubleCheeseburgers = 20;
+    EatAtJoes();
+    return 0;
+}
+
+
+
+// --- Using the sharealike.h Header File to Declare a Global Variable---
+
+#ifndef SHAREALIKE_H_INCLUDED
+#define SHAREALIKE_H_INCLUDED
+extern int DoubleCheeseburgers;
+void EatAtJoes();
+#endif // SHAREALIKE_H_INCLUDED
+
+
+// --- Declaring Global Variable Storage in the sharealike.cpp File---
+
+#include <iostream>
+#include "sharealike.h"
+using namespace std;
+int DoubleCheeseburgers = 0;
+
+void EatAtJoes() {
+    cout << "How many cheeseburgers today?" << endl;
+    cout << DoubleCheeseburgers << endl;
+}

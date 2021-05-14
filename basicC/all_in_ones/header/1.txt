@@ -1,0 +1,23 @@
+
+// main.cpp
+
+void BigDog(int KibblesCount);
+
+int main()
+{
+    BigDog(3);
+    return 0;
+}
+
+
+// bigdog.cpp 在一个目录下
+
+#include <iostream>
+using namespace std;
+
+void BigDog(int KibblesCount)
+{
+    cout << "I'm a lucky dog" << endl;
+    cout << "I have " << KibblesCount << " pieces of food"
+         << endl;
+}

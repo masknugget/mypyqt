@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    /**
+    cout << start + time << endl;
+    cout << start + 5 << endl;
+    total = start + time;
+    total = start + 5;
+    total = total + 5;
+    total += 5;
+    total = total + time;
+    total += time;
+    total++;
+    **/
+    
+    int total;
+    total = 12;
+    
+    cout << total << endl;
+    
+    total = total + 5;
+    cout << total << endl;
+    return 0;
+}

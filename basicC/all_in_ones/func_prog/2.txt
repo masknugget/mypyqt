@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+struct Immutable
+{
+    int val{1};
+    void SayHi(string Name) const
+    {
+        Name = "Smith";
+        val = 2;                    // 这个是不可变量，发生了错误
+        cout << Name << val << endl;
+    }
+    void ChangeVal()
+    {
+        val = 3;
+        cout << val << endl;
+    }
+};
+int main()
+{
+    const Immutable Test;
+    Test.ChangeVal();
+    Test.SayHi("Sam");
+    return 0;
+}

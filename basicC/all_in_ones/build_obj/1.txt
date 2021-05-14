@@ -1,0 +1,100 @@
+// --- Pen.h Contains the Class Description for Pen ---
+
+#ifndef PEN_H_INCLUDED
+#define PEN_H_INCLUDED
+using namespace std;
+
+enum Color
+{
+    blue,
+    red,
+    black,
+    clear,
+    grey
+};
+
+enum PenStyle
+{
+    ballpoint,
+    felt_tip,
+    fountain_pen
+};
+
+class Pen
+{
+public:
+    Color InkColor;
+    Color ShellColor;
+    Color CapColor;
+    PenStyle Style;
+    float Length;
+    string Brand;
+    int InkLevelPercent;
+
+    void write_on_paper(string words)
+    {
+        if (InkLevelPercent <= 0)
+        {
+            cout << "Oops! Out of ink!" << endl;
+        }
+        else
+        {
+            cout << words << endl;
+            InkLevelPercent = InkLevelPercent - words.length();
+        }
+    }
+
+    void break_in_half()
+    {
+        InkLevelPercent = InkLevelPercent / 2;
+        Length = Length / 2.0;
+    }
+
+    void run_out_of_ink()
+    {
+        InkLevelPercent = 0;
+    }
+};
+
+
+#endif // PEN_H_INCLUDED
+
+
+
+// --- main.cpp Contains Code That Uses the Class Pen---
+
+#include <iostream>
+#include "Pen.h"
+using namespace std;
+int main()
+{
+    Pen FavoritePen;
+    FavoritePen.InkColor = blue;
+    FavoritePen.ShellColor = grey;
+    FavoritePen.CapColor = blue;
+    FavoritePen.Style = ballpoint;
+    FavoritePen.Length = 5.5;
+    FavoritePen.Brand = "Office Depot";
+    FavoritePen.InkLevelPercent = 30;
+
+    Pen WorstPen;
+    WorstPen.InkColor = red;
+    WorstPen.ShellColor = red;
+    WorstPen.CapColor = black;
+    WorstPen.Style = fountain_pen;
+    WorstPen.Length = 5.0;
+    WorstPen.Brand = "Parker";
+    WorstPen.InkLevelPercent = 60;
+
+    cout << "This is my favorite pen" << endl;
+    cout << "Color: " << FavoritePen.InkColor << endl;
+    cout << "Brand: " << FavoritePen.Brand << endl;
+    cout << "Ink Level: " << FavoritePen.InkLevelPercent
+         << "%" << endl;
+    FavoritePen.write_on_paper("Hello I am a pen");
+    cout << "Ink Level: " << FavoritePen.InkLevelPercent
+         << "%" << endl;
+
+    return 0;
+}
+

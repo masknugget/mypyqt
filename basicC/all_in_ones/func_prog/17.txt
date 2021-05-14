@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+// consteval 是后面产生的前面没有
+consteval double sqr(float x)
+{
+    return x * x;
+}
+
+int main()
+{
+    constexpr double MySquare = sqr(4.2);
+    cout << MySquare << endl;
+    return 0;
+}

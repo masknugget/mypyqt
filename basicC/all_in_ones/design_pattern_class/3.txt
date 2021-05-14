@@ -1,0 +1,447 @@
+// --- Using the carparts.h File
+
+#ifndef CARPARTS_H_INCLUDED
+#define CARPARTS_H_INCLUDED
+#include "mediator.h"
+class CarControls; // forward reference
+class CarPart
+{
+protected:
+    Mediator *mediator;
+    CarPart(Mediator *med) : mediator(med) {}
+    void Changed();
+};
+class Engine : public CarPart
+{
+protected:
+    friend class Mediator;
+    friend class CarControls;
+    int RPM;
+    int Revamount;
+public:
+    Engine(Mediator *med) : CarPart(med),
+        RPM(0), Revamount(0) {}
+    void Start();
+    void PushGasPedal(int amount);
+    void ReleaseGasPedal(int amount);
+    void Stop();
+};
+class Electric : public CarPart
+{
+protected:
+    friend class Mediator;
+    friend class CarControls;
+    int Output;
+    int ChangedBy;
+public:
+    Electric(Mediator *med) : CarPart(med),
+        Output(0), ChangedBy(0) {}
+    void ChangeOutputBy(int amount);
+};
+class Radio : public CarPart
+{
+protected:
+    friend class Mediator;
+    friend class CarControls;
+    int Volume;
+public:
+    Radio(Mediator *med) : CarPart(med), Volume(0) {}
+    void AdjustVolume(int amount)
+    {
+        Volume += amount;
+    }
+    void SetVolume(int amount)
+    {
+        Volume = amount;
+    }
+    int GetVolume()
+    {
+        return Volume;
+    }
+};
+class Wheels : public CarPart
+{
+protected:
+    friend class Mediator;
+    friend class CarControls;
+    int Speed;
+public:
+    Wheels(Mediator *med) : CarPart(med), Speed(0) {}
+    int GetSpeed()
+    {
+        return Speed;
+    }
+    void Accelerate(int amount);
+    void Decelerate(int amount);
+};
+class Brakes : public CarPart
+{
+protected:
+    friend class Mediator;
+    friend class CarControls;
+    int Pressure;
+public:
+    Brakes(Mediator *med) : CarPart(med), Pressure(0) {}
+    void Apply(int amount);
+};
+class Headlights : public CarPart
+{
+protected:
+    friend class Mediator;
+    friend class CarControls;
+    int Brightness;
+public:
+    Headlights(Mediator *med):CarPart(med), Brightness(0) {}
+    void TurnOn()
+    {
+        Brightness = 100;
+    }
+    void TurnOff()
+    {
+        Brightness = 0;
+    }
+    void Adjust(int Amount);
+    int GetBrightness()
+    {
+        return Brightness;
+    }
+};
+class AirConditioner : public CarPart
+{
+protected:
+    friend class Mediator;
+    friend class CarControls;
+    int Level;
+    int ChangedBy;
+public:
+    AirConditioner(Mediator *med) : CarPart(med),
+        Level(0), ChangedBy(0) {}
+    void TurnOn();
+    void TurnOff();
+    bool GetLevel()
+    {
+        return Level;
+    }
+    void SetLevel(int level);
+};
+class Road : public CarPart
+{
+protected:
+    friend class Mediator;
+    friend class CarControls;
+    int ClimbAngle;
+    int BumpHeight;
+    int BumpWhichTire;
+public:
+    Road(Mediator *med) : CarPart(med) {}
+    void ClimbDescend(int angle);
+    void Bump(int height, int which);
+};
+#endif // CARPARTS_H_INCLUDED
+
+
+// --- Using the mediator.h File ---
+
+#ifndef MEDIATOR_H_INCLUDED
+#define MEDIATOR_H_INCLUDED
+// Define all of the required forward references.
+class CarPart;
+class Engine;
+class Electric;
+class Radio;
+class SteeringWheel;
+class Wheels;
+class Brakes;
+class Headlights;
+class AirConditioner;
+class Road;
+class Mediator
+{
+public:
+    Engine *MyEngine;
+    Electric *MyElectric;
+    Radio *MyRadio;
+    SteeringWheel *MySteeringWheel;
+    Wheels *MyWheels;
+    Brakes *MyBrakes;
+    Headlights *MyHeadlights;
+    AirConditioner *MyAirConditioner;
+    Road *MyRoad;
+    Mediator();
+    void PartChanged(CarPart *part);
+};
+class CarControls : public Mediator
+{
+public:
+    void StartCar();
+    void StopCar();
+    void PushGasPedal(int amount);
+    void ReleaseGasPedal(int amount);
+    void PressBrake(int amount);
+    void Turn(int amount);
+    void TurnOnRadio();
+    void TurnOffRadio();
+    void AdjustRadioVolume(int amount);
+    void TurnOnHeadlights();
+    void TurnOffHeadlights();
+    void ClimbHill(int angle);
+    void DescendHill(int angle);
+    void TurnOnAC();
+    void TurnOffAC();
+    void AdjustAC(int amount);
+    int GetSpeed();
+    CarControls() : Mediator() {}
+};
+#endif // MEDIATOR_H_INCLUDED
+
+
+
+
+// --- Presenting the carparts.cpp File ---
+#include <iostream>
+#include "carparts.h"
+using namespace std;
+void CarPart::Changed()
+{
+    mediator->PartChanged(this);
+}
+void Engine::Start()
+{
+    RPM = 1000;
+    Changed();
+}
+void Engine::PushGasPedal(int amount)
+{
+    Revamount = amount;
+    RPM += Revamount;
+    Changed();
+}
+void Engine::ReleaseGasPedal(int amount)
+{
+    Revamount = amount;
+    RPM -= Revamount;
+    Changed();
+}
+void Engine::Stop()
+{
+    RPM = 0;
+    Revamount = 0;
+    Changed();
+}
+void Electric::ChangeOutputBy(int amount)
+{
+    Output += amount;
+    ChangedBy = amount;
+    Changed();
+}
+void Wheels::Accelerate(int amount)
+{
+    Speed += amount;
+    Changed();
+}
+void Wheels::Decelerate(int amount)
+{
+    Speed -= amount;
+    Changed();
+}
+void Brakes::Apply(int amount)
+{
+    Pressure = amount;
+    Changed();
+}
+void Headlights::Adjust(int Amount)
+{
+    Brightness += Amount;
+}
+void AirConditioner::TurnOn()
+{
+    ChangedBy = 100 - Level;
+    Level = 100;
+    Changed();
+}
+void AirConditioner::TurnOff()
+{
+    ChangedBy = 0 - Level;
+    Level = 0;
+    Changed();
+}
+void AirConditioner::SetLevel(int newlevel)
+{
+    Level = newlevel;
+    ChangedBy = newlevel - Level;
+    Changed();
+}
+void Road::ClimbDescend(int angle)
+{
+    ClimbAngle = angle;
+    Changed();
+}
+void Road::Bump(int height, int which)
+{
+    BumpHeight = height;
+    BumpWhichTire = which;
+    Changed();
+}
+
+
+// --- Presenting the mediator.cpp File
+
+#include <iostream>
+#include "carparts.h"
+#include "mediator.h"
+using namespace std;
+
+Mediator::Mediator()
+{
+    MyEngine = new Engine(this);
+    MyElectric = new Electric(this);
+    MyRadio = new Radio(this);
+    MyWheels = new Wheels(this);
+    MyBrakes = new Brakes(this);
+    MyHeadlights = new Headlights(this);
+    MyAirConditioner = new AirConditioner(this);
+    MyRoad = new Road(this);
+}
+
+void Mediator::PartChanged(CarPart *part)
+{
+    if (part == MyEngine)
+    {
+        if (MyEngine->RPM == 0)
+        {
+            MyWheels->Speed = 0;
+            return;
+        }
+        if (MyEngine->Revamount == 0)
+        {
+            return;
+        }
+    // If engine increases, increase the electric output
+        MyElectric->ChangeOutputBy(MyEngine->Revamount / 10);
+        if (MyEngine->Revamount > 0)
+            MyWheels->Accelerate(MyEngine->Revamount / 50);
+    }
+    else if (part == MyElectric)
+    {
+        // Dim or brighten the headlights
+        if (MyHeadlights->Brightness > 0)
+            MyHeadlights->Adjust(MyElectric->ChangedBy / 20);
+        if (MyRadio->Volume > 0)
+            MyRadio->AdjustVolume(MyElectric->ChangedBy / 30);
+    }
+    else if (part == MyBrakes)
+        MyWheels->Decelerate(MyBrakes->Pressure / 5);
+    else if (part == MyAirConditioner)
+        MyElectric->ChangeOutputBy(
+            0 - MyAirConditioner->ChangedBy * 2);
+    else if (part == MyRoad)
+    {
+        if (MyRoad->ClimbAngle > 0)
+        {
+            MyWheels->Decelerate(MyRoad->ClimbAngle * 2);
+            MyRoad->ClimbAngle = 0;
+        }
+        else if (MyRoad->ClimbAngle < 0)
+        {
+            MyWheels->Accelerate(MyRoad->ClimbAngle * -4);
+            MyRoad->ClimbAngle = 0;
+        }
+    }
+}
+void CarControls::StartCar()
+{
+    MyEngine->Start();
+}
+void CarControls::StopCar()
+{
+    MyEngine->Stop();
+}
+void CarControls::PushGasPedal(int amount)
+{
+    MyEngine->PushGasPedal(amount);
+}
+void CarControls::ReleaseGasPedal(int amount)
+{
+    MyEngine->ReleaseGasPedal(amount);
+}
+void CarControls::PressBrake(int amount)
+{
+    MyBrakes->Apply(amount);
+}
+void CarControls::TurnOnRadio()
+{
+    MyRadio->SetVolume(100);
+}
+void CarControls::TurnOffRadio()
+{
+    MyRadio->SetVolume(0);
+}
+void CarControls::AdjustRadioVolume(int amount)
+{
+    MyRadio->AdjustVolume(amount);
+}
+void CarControls::TurnOnHeadlights()
+{
+    MyHeadlights->TurnOn();
+}
+MyHeadlights->TurnOff();
+}
+void CarControls::ClimbHill(int angle)
+{
+    MyRoad->ClimbDescend(angle);
+}
+void CarControls::DescendHill(int angle)
+{
+    MyRoad->ClimbDescend( 0 - angle );
+}
+int CarControls::GetSpeed()
+{
+    return MyWheels->Speed;
+}
+void CarControls::TurnOnAC()
+{
+    MyAirConditioner->TurnOn();
+}
+void CarControls::TurnOffAC()
+{
+    MyAirConditioner->TurnOff();
+}
+void CarControls::AdjustAC(int amount)
+{
+    MyAirConditioner->SetLevel(amount);
+}
+
+
+
+// --- Running the Car through Its Paces ---
+
+#include <iostream>
+#include "mediator.h"
+#include "carparts.h"
+using namespace std;
+int main()
+{
+// Create a new car.
+    Mediator *MyCar = new Mediator();
+// Start the engine.
+    MyCar->MyEngine->Start();
+    cout << "Engine Started!" << endl;
+// Accelerate.
+    MyCar->MyWheels->Accelerate(20);
+    cout << "The car is going: " <<
+         MyCar->MyWheels->GetSpeed() << endl;
+// Apply the brakes.
+    MyCar->MyBrakes->Apply(20);
+    cout << "Applying the brakes." << endl;
+    cout << "The car is going: " <<
+         MyCar->MyWheels->GetSpeed() << endl;
+// Stop the car.
+    MyCar->MyBrakes->Apply(80);
+    cout << "Applying the brakes." << endl;
+    cout << "The car is going: " <<
+         MyCar->MyWheels->GetSpeed() << endl;
+// Shut off the engine.
+    MyCar->MyEngine->Stop();
+    cout << "Engine Stopped" << endl;
+    return 0;
+}

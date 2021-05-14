@@ -1,0 +1,96 @@
+// --- Pen.h ---
+
+#ifndef PEN_H_INCLUDED
+#define PEN_H_INCLUDED
+using namespace std;
+enum Color
+{
+    blue,
+    red,
+    black,
+    clear,
+    grey
+};
+
+enum PenStyle
+{
+    ballpoint,
+    felt_tip,
+    fountain_pen
+};
+
+class Pen
+{
+public:
+    Color InkColor;
+    Color ShellColor;
+    Color CapColor;
+    PenStyle Style;
+    float Length;
+    string Brand;
+    int InkLevelPercent;
+    void write_on_paper(string words);
+    void break_in_half();
+    void run_out_of_ink();
+};
+#endif // PEN_H_INCLUDED
+
+
+// --- main.cpp ---
+
+#include <iostream>
+#include "Pen.h"
+
+using namespace std;
+
+int main()
+{
+    Pen *MyPen;                         // Declares the pointer
+    MyPen = new Pen;                    // Calls new to create the object
+    MyPen->InkColor = red;              // Accesses the members of the object  through the pointer
+    cout << MyPen->InkColor << endl;    
+    delete MyPen;                       // Deletes the object
+    MyPen = 0;                          // Clears the pointer
+    return 0;
+}
+
+
+// --- Managing an Object’s Life Using Smart Pointers ---
+
+#include <iostream>
+#include <memory>
+#include "Pen.h"
+
+using namespace std;
+
+int main() {
+    unique_ptr<Pen> MyPen;
+    
+    MyPen.reset(new Pen());
+    MyPen->InkColor = red;
+
+    cout << MyPen->InkColor << endl;
+    MyPen.reset();
+    return 0;
+}
+
+
+// ---
+#include <iostream>
+#include "Pen.h"
+
+using namespace std;
+
+void Inspect(const Pen *Checkitout)
+{
+    cout << Checkitout->Brand << endl;
+}
+int main()
+{
+    Pen *MyPen = new Pen();
+    MyPen->Brand = "Spy Plus Camera";
+    Inspect(MyPen);
+    return 0;
+}
+
+

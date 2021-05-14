@@ -1,0 +1,49 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string mystring;
+    mystring = "Hello there";
+    cout << mystring << endl;
+
+    mystring = "abcdef";
+    cout << mystring[2] << endl;
+
+    char mychar = mystring[2];
+    cout << mychar << endl;
+
+    string x = "abcdef";
+    x[1] = 'q';
+    cout << x << endl;
+
+
+    // #include <string>
+    // #include <iostream>
+
+    mystring = "Hi ";
+    mystring += "there";
+    cout << mystring << endl;
+
+    mystring = "abcdef";
+    mystring += 'g';
+    cout << mystring << endl;
+
+
+    string first = "hello ";
+    string second = "there";
+    //string third = first + second; 这个只能声明一次
+    string third = first + "there";
+
+    cout << third << endl;
+
+    //string bigstring = "hello" + "there";
+    //cout << bigstring << endl;
+
+    bool result;
+    result = (first == second) ? "equal" : "not equal";
+
+
+    return 0;
+}

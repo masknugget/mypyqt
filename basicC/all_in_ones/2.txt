@@ -1,0 +1,52 @@
+#include <string>
+#include <ostream>
+class Person
+{
+public:
+    Person() = default;
+    explicit Person(const std::string& first,
+                    const std::string& last = "", bool isVIP = false)
+        : m_first(first), m_last(last), m_isVIP(isVIP) {}
+    const std::string& GetFirstName() const
+    {
+        return m_first;
+    }
+    void SetFirstName(const std::string& first)
+    {
+        m_first = first;
+    }
+    const std::string& GetLastName() const
+    {
+        return m_last;
+    }
+    void SetLastName(const std::string& last)
+    {
+        m_last = last;
+    }
+    bool IsVIP() const
+    {
+        return m_isVIP;
+    }
+
+private:
+    friend bool operator<(const Person&, const Person&);
+    std::string m_first;
+    std::string m_last;
+    bool m_isVIP = false;
+};
+
+// comparison operator
+bool operator<(const Person& lhs, const Person& rhs)
+{
+    if (lhs.IsVIP() != rhs.IsVIP()) return rhs.IsVIP();
+    if (lhs.GetLastName() != rhs.GetLastName())
+        return lhs.GetLastName() < rhs.GetLastName();
+    return lhs.GetFirstName < rhs.GetFirstName();
+}
+
+
+
+std::ostream& operator<<(std::ostream& os, const Person& person) {
+    os<<person.GetFirstName() << ' ' << person.GetLastName();
+    return os
+}

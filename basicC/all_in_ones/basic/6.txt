@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int final;
+    int time;
+    final = 28;
+    time = 18;
+    cout << final - time << endl;
+    cout << final - 5 << endl;
+
+    final = final - time;
+    final -= time;
+    
+    final = final - 12;
+    final -= 12;
+    
+    return 0;
+}

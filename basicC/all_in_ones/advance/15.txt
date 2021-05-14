@@ -1,0 +1,34 @@
+class Clutter
+{
+protected:
+    string ChildName;
+    int Toys;
+
+public:
+    Clutter(int count, string name)
+    {
+        ChildName = name;
+        Toys = count;
+    }
+
+    Clutter(string name)
+    {
+        ChildName = name;
+        Toys = 0;
+    }
+};
+
+class Simple
+{
+public:
+    int x,y;
+    void Write()
+    {
+        cout << x << " " << y << endl;
+    }
+    Simple() {}
+    Simple(int startx)
+    {
+        x = startx;
+    }
+};
