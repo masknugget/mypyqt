@@ -1,0 +1,497 @@
+
+hello.pyx
+
+    def say_hello_to(name):
+        print("Hello %s!" % name)
+
+
+    def f(x):
+        return x ** 2 - x
+
+
+    def integrate_f(a, b, N):
+        s = 0
+        dx = (b - a) / N
+        for i in range(N):
+            s += f(a + i * dx)
+        return s * dx
+
+    def f(double x):
+        return x ** 2 - x
+
+
+    def integrate_f(double a, double b, int N):
+        cdef int i
+        cdef double s, dx
+        s = 0
+        dx = (b - a) / N
+        for i in range(N):
+            s += f(a + i * dx)
+        return s * dx
+
+
+
+    cdef double f(double x) except? -2:
+        return x ** 2 - x
+
+
+setup.py
+
+    from setuptools import setup
+    from Cython.Build import cythonize
+
+    setup(
+        name='Hello world app',
+        ext_modules=cythonize("hello.pyx"),
+        zip_safe=False,
+    )
+
+
+$ python setup.py build_ext --inplace
+$ cython -a mycode.pyx
+
+
+一个pyx模块中函数不能重复名字cdef定义的
+
+    def f(double x):
+        return x ** 2 - x
+
+    cdef double f(double x) except? -2:
+        return x ** 2 - x
+
+
+
+这个似乎
+
+    def primes(int nb_primes):
+        cdef int n, i, len_p
+        cdef int p[1000]
+        if nb_primes > 1000:
+            nb_primes = 1000
+
+        len_p = 0  # The current number of elements in p.
+        n = 2
+        while len_p < nb_primes:
+            # Is n prime?
+            for i in p[:len_p]:
+                if n % i == 0:
+                    break
+
+            # If no break occurred in the loop, we have a prime.
+            else:
+                p[len_p] = n
+                len_p += 1
+            n += 1
+
+        # Let's return the result in a python list:
+        result_as_list  = [prime for prime in p[:len_p]]
+        return result_as_list
+
+
+
+
+class MathFunction(object):
+    def __init__(self, name, operator):
+        self.name = name
+        self.operator = operator
+
+    def __call__(self, *operands):
+        return self.operator(*operands)
+
+
+
+
+CyIntegration/
+├── __init__.pyx
+├── __init__.pxd
+├── integrate.pyx
+└── integrate.pxd
+
+
+
+import random
+from libc.stdlib cimport malloc, free
+
+def random_noise(int number=1):
+    cdef int i
+    # allocate number * sizeof(double) bytes of memory
+    cdef double *my_array = <double *> malloc(number * sizeof(double))
+    if not my_array:
+        raise MemoryError()
+
+    try:
+        ran = random.normalvariate
+        for i in range(number):
+            my_array[i] = ran(0, 1)
+
+        # ... let's just assume we do some more heavy C calculations here to make up
+        # for the work that it takes to pack the C double values into Python float
+        # objects below, right after throwing away the existing objects above.
+
+        return [x for x in my_array[:number]]
+    finally:
+        # return the previously allocated memory to the system
+        free(my_array)
+
+
+
+
+
+from cpython.mem cimport PyMem_Malloc, PyMem_Realloc, PyMem_Free
+
+cdef class SomeMemory:
+
+    cdef double* data
+
+    def __cinit__(self, size_t number):
+        # allocate some memory (uninitialised, may contain arbitrary data)
+        self.data = <double*> PyMem_Malloc(number * sizeof(double))
+        if not self.data:
+            raise MemoryError()
+
+    def resize(self, size_t new_number):
+        # Allocates new_number * sizeof(double) bytes,
+        # preserving the current content and making a best-effort to
+        # re-use the original data location.
+        mem = <double*> PyMem_Realloc(self.data, new_number * sizeof(double))
+        if not mem:
+            raise MemoryError()
+        # Only overwrite the pointer if the memory was really reallocated.
+        # On error (mem is NULL), the originally memory has not been freed.
+        self.data = mem
+
+    def __dealloc__(self):
+        PyMem_Free(self.data)  # no-op if self.data is NULL
+
+
+
+
+一个集成的例子
+
+integrate.pyx
+
+    cdef class Function:
+        cpdef double evaluate(self, double x) except *
+
+    cdef class SinOfSquareFunction(Function):
+        cpdef double evaluate(self, double x) except *
+
+math_function.py
+
+    class MathFunction(object):
+        def __init__(self, name, operator):
+            self.name = name
+            self.operator = operator
+
+        def __call__(self, *operands):
+            return self.operator(*operands)
+
+math_function_2.pyx
+
+    cdef class Function:
+        cpdef double evaluate(self, double x) except *:
+            return 0
+
+
+nonecheck.pyx
+
+    # cython: nonecheck=True
+    #        ^^^ Turns on nonecheck globally
+
+    import cython
+
+    cdef class MyClass:
+        pass
+
+    # Turn off nonecheck locally for the function
+    @cython.nonecheck(False)
+    def func():
+        cdef MyClass obj = None
+        try:
+            # Turn nonecheck on again for a block
+            with cython.nonecheck(True):
+                print(obj.myfunc())  # Raises exception
+        except AttributeError:
+            pass
+        print(obj.myfunc())  # Hope for a crash!
+
+
+sin_of_square.pyd
+
+    cdef class Function:
+        cpdef double evaluate(self, double x) except *
+
+    cdef class SinOfSquareFunction(Function):
+        cpdef double evaluate(self, double x) except *
+
+sin_of_square.pyx
+
+    from libc.math cimport sin
+
+    cdef class Function:
+        cpdef double evaluate(self, double x) except *:
+            return 0
+
+    cdef class SinOfSquareFunction(Function):
+        cpdef double evaluate(self, double x) except *:
+            return sin(x ** 2)
+
+wave_function.pyx
+
+    from sin_of_square cimport Function
+
+    cdef class WaveFunction(Function):
+
+        # Not available in Python-space:
+        cdef double offset
+
+        # Available in Python-space:
+        cdef public double freq
+
+        # Available in Python-space, but only for reading:
+        cdef readonly double scale
+
+        # Available in Python-space:
+        @property
+        def period(self):
+            return 1.0 / self.freq
+
+        @period.setter
+        def period(self, value):
+            self.freq = 1.0 / value
+
+
+
+
+#####################
+
+通过 pxd进行声明
+
+A.py
+
+    def myfunction(x, y=2):
+        a = x - y
+        return a + x * y
+
+    def _helper(a):
+        return a + 1
+
+    class A:
+        def __init__(self, b=0):
+            self.a = 3
+            self.b = b
+
+        def foo(self, x):
+            print(x + _helper(1.0))
+
+
+A.pxd
+
+    cpdef int myfunction(int x, int y=*)
+    cdef double _helper(double a)
+
+    cdef class A:
+        cdef public int a, b
+        cpdef foo(self, double x)
+
+
+
+###########
+
+cython 在 py文件中使用
+
+import cython
+
+if cython.compiled:
+    print("Yep, I'm compiled.")
+else:
+    print("Just a lowly interpreted script.")
+
+
+--
+
+import cython
+
+x = cython.declare(cython.int)              # cdef int x
+y = cython.declare(cython.double, 0.57721)  # cdef double y = 0.57721
+
+
+--
+
+import cython
+
+cython.declare(x=cython.int, y=cython.double)  # cdef int x; cdef double y
+
+
+---
+
+import cython
+
+
+@cython.cclass
+class A:
+    cython.declare(a=cython.int, b=cython.int)
+    c = cython.declare(cython.int, visibility='public')
+    d = cython.declare(cython.int)  # private by default.
+    e = cython.declare(cython.int, visibility='readonly')
+
+    def __init__(self, a, b, c, d=5, e=3):
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+        self.e = e
+
+
+---
+import cython
+
+@cython.locals(a=cython.long, b=cython.long, n=cython.longlong)
+def foo(a, b, x, y):
+    n = a * b
+    # ...
+
+@cython.returns(<type>) 指定函数的返回类型。
+
+@cython.exceptval(value=None, *, check=False) 指定函数的异常返回值和异常检查语义，如下所示：
+
+@exceptval(-1)               # cdef int func() except -1:
+@exceptval(-1, check=False)  # cdef int func() except -1:
+@exceptval(check=True)       # cdef int func() except *:
+@exceptval(-1, check=True)   # cdef int func() except? -1:
+@exceptval(check=False)      # no exception checking/propagation
+
+
+Cython模块内置了许多类型。它提供了所有标准的C类型，即char，short，int，long，longlong 以及他们的无符号的uchar，ushort，uint，ulong， ulonglong。特殊bint类型用于C布尔值和 Py_ssize_tPython容器的（带符号）大小。
+
+对于每种类型，都有指针类型p_int，pp_int等等，在解释模式下为三层，在编译模式下为三层。可以使用cython.pointer(cython.int)，和数组构造更多的指针类型cython.int[10]。试图模拟这些更复杂的类型是有限的尝试，但是使用Python语言只能做很多事情。
+
+Python的类型INT，长和布尔被解释为C int，long 和bint分别。此外，Python的内建类型list，dict， tuple等可以被使用，以及任何用户定义的类型。
+
+类型化的C元组可以声明为C类型的元组。
+
+扩展类型和CDEF功能
+类装饰器@cython.cclass创建一个。cdef class
+函数/方法装饰器@cython.cfunc创建一个cdef函数。
+@cython.ccall创建一个cpdef函数，即Cython代码可以在C级别调用的函数。
+@cython.locals声明局部变量（见上文）。它也可以用来声明参数的类型，即签名中使用的局部变量。
+@cython.inline是Cinline修饰符的等效项。
+@cython.final通过防止将类型用作基类或在子类型中覆盖方法来终止继承链。这样可以进行某些优化，例如内联方法调用。
+这是一个cdef函数示例：
+
+@cython.cfunc
+@cython.returns(cython.bint)
+@cython.locals(a=cython.int, b=cython.int)
+def c_compare(a,b):
+    return a == b
+
+
+
+address用于代替&运算符：
+
+    cython.declare(x=cython.int, x_ptr=cython.p_int)
+    x_ptr = cython.address(x)
+
+sizeof模拟sizeof运算符。它可以同时包含类型和表达式。
+
+    cython.declare(n=cython.longlong)
+    print(cython.sizeof(cython.longlong))
+    print(cython.sizeof(n))
+
+struct 可以用来创建结构类型。
+
+    MyStruct = cython.struct(x=cython.int, y=cython.int, data=cython.double)
+    a = cython.declare(MyStruct)
+
+
+    cdef struct MyStruct:
+        int x
+        int y
+        double data
+
+    cdef MyStruct a
+
+
+    typedef 在给定名称下定义类型：
+
+    T = cython.typedef(cython.p_int)   # ctypedef int* T
+
+特殊cython模块也可以导入并在扩充 .pxd文件中使用。例如，以下Python文件dostuff.py：
+
+    def dostuff(n):
+        t = 0
+        for i in range(n):
+            t += i
+        return t
+
+
+dostuff.pxd
+
+    import cython
+
+    @cython.locals(t=cython.int, i=cython.int)
+    cpdef int dostuff(int n)
+
+
+类型注解
+
+    import cython
+
+    def func():
+        # Cython types are evaluated as for cdef declarations
+        x: cython.int               # cdef int x
+        y: cython.double = 0.57721  # cdef double y = 0.57721
+        z: cython.float = 0.57721   # cdef float z  = 0.57721
+
+        # Python types shadow Cython types for compatibility reasons
+        a: float = 0.54321          # cdef double a = 0.54321
+        b: int = 5                  # cdef object b = 5
+        c: long = 6                 # cdef object c = 6
+        pass
+
+    @cython.cclass
+    class A:
+        a: cython.int
+        b: cython.int
+
+        def __init__(self, b=0):
+            self.a = 3
+            self.b = b
+
+
+##
+
+# mymodule.pxd
+
+# declare a C function as "cpdef" to export it to the module
+cdef extern from "math.h":
+    cpdef double sin(double x)
+# mymodule.py
+
+import cython
+
+# override with Python import if not in compiled code
+if not cython.compiled:
+    from math import sin
+
+# calls sin() from math.h when compiled with Cython and math.sin() in Python
+print(sin(0))
+
+
+## 将C数组用于固定大小的列表
+
+    import cython
+
+
+    @cython.locals(counts=cython.int[10], digit=cython.int)
+    def count_digits(digits):
+        """
+        >>> digits = '01112222333334445667788899'
+        >>> count_digits(map(int, digits))
+        [1, 3, 4, 5, 3, 1, 2, 2, 3, 2]
+        """
+        counts = [0] * 10
+        for digit in digits:
+            assert 0 <= digit <= 9
+            counts[digit] += 1
+        return counts
