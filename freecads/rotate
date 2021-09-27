@@ -1,0 +1,28 @@
+import FreeCAD as App
+import Draft
+
+doc = App.newDocument()
+
+polygon1 = Draft.make_polygon(3, radius=300)
+Draft.move(polygon1, App.Vector(1000, 0, 0))
+
+# Rotation around the origin
+angle1 = 45
+rot2 = Draft.rotate(polygon1, angle1, copy=True)
+rot3 = Draft.rotate(polygon1, 2*angle1, copy=True)
+rot4 = Draft.rotate(polygon1, 4*angle1, copy=True)
+
+polygon2 = Draft.make_polygon(3, radius=1000)
+polygon3 = Draft.make_polygon(5, radius=500)
+Draft.move(polygon2, App.Vector(2000, 0, 0))
+Draft.move(polygon3, App.Vector(2000, 0, 0))
+
+# Rotation around another point
+angle2 = 60
+cen = App.Vector(3100, 0, 0)
+list2 = [polygon2, polygon3]
+rot_list2 = Draft.rotate(list2, angle2, center=cen, copy=True)
+rot_list3 = Draft.rotate(list2, 2*angle2, center=cen, copy=True)
+rot_list4 = Draft.rotate(list2, 4*angle2, center=cen, copy=True)
+
+doc.recompute()
