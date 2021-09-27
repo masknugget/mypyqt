@@ -1,0 +1,25 @@
+App.Placement(App.Vector(0,0,0),
+            App.Rotation(App.Vector(0,0,1),4512)
+            )
+
+
+FreeCAD.getDocument('EngineBlock').getObject('Common').Placement = App.Placement(App.Vector(0,0,0),App.Rotation(App.Vector(0,0,1),45))
+FreeCAD.getDocument('EngineBlock').getObject('Common').Placement = App.Placement(App.Vector(0,0,0),App.Rotation(App.Vector(0,1,0),45))
+
+FreeCAD.getDocument('EngineBlock').getObject('Common').Placement = App.Placement(App.Vector(0,0,0),App.Rotation(obj.Placement.Rotation.Axis, math.degrees(obj.Placement.Rotation.Angle)))
+
+import math
+
+# 角度变弧度
+math.radians()
+
+
+# 弧度变角度
+math.degrees()
+
+App.Placement(App.Vector(0,0,0),
+                App.Rotation(10,20,30), 
+                App.Vector(0,0,0))
+
+
+            
