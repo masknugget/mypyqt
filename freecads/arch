@@ -1,0 +1,143 @@
+# Arch_Wall
+
+import FreeCAD, Draft, Arch
+
+p1 = FreeCAD.Vector(0, 0, 0)
+p2 = FreeCAD.Vector(2000, 0, 0)
+baseline = Draft.makeLine(p1, p2)
+Wall1 = Arch.makeWall(baseline, length=None, width=150, height=2000)
+FreeCAD.ActiveDocument.recompute()
+
+Wall2 = Arch.makeWall(None, length=2000, width=200, height=1000)
+Draft.move(Wall2, FreeCAD.Vector(0, -1000, 0))
+FreeCAD.ActiveDocument.recompute()
+
+
+# Arch Structure
+
+Structure = makeStructure(baseobj=None, height=None)
+Structure = makeStructure(baseobj=None, length=None, width=None, height=None, name="Structure")
+
+
+import FreeCAD, Draft, Arch
+
+Rect = Draft.makeRectangle(200, 300)
+Structure1 = Arch.makeStructure(Rect, height=2000)
+FreeCAD.ActiveDocument.recompute()
+
+Structure2 = Arch.makeStructure(None, length=500, width=1000, height=3000)
+Draft.move(Structure2, FreeCAD.Vector(2000, 0, 0))
+FreeCAD.ActiveDocument.recompute()
+
+
+
+# Arch Rebar Straight
+
+Rebar = makeStraightRebar(f_cover, coverAlong, rt_cover, lb_cover,
+                          diameter, amount_spacing_check, amount_spacing_value, orientation="Horizontal",
+                          structure=None, facename=None)
+
+# The rebar is horizontal
+Rebar = makeStraightRebar(f_cover, ("Top Side", value), right_cover, left_cover, ...)
+Rebar = makeStraightRebar(f_cover, ("Bottom Side", value), right_cover, left_cover, ...)
+
+
+# The rebar is vertical
+Rebar = makeStraightRebar(f_cover, ("Left Side", value), top_cover, bottom_cover, ...)
+Rebar = makeStraightRebar(f_cover, ("Right Side", value), top_cover, bottom_cover, ...)
+
+
+
+
+import Arch, Draft, StraightRebar
+
+Structure = Arch.makeStructure(length=1000, width=1000, height=400)
+Structure.ViewObject.Transparency = 80
+FreeCAD.ActiveDocument.recompute()
+
+Rebar = StraightRebar.makeStraightRebar(50, ("Bottom Side", 20), 100, 100,
+                                        12, True, 5, "Horizontal", Structure, "Face4")
+Rebar.ViewObject.ShapeColor = (0.9, 0.0, 0.0)
+
+Rebar2 = StraightRebar.makeStraightRebar(50, ("Bottom Side", 50), 100, 100,
+                                         12, True, 5, "Horizontal", Structure, "Face6")
+Rebar2.ViewObject.ShapeColor = (0.0, 0.0, 0.9)
+
+
+
+import Arch, Draft, StraightRebar
+
+Structure2 = Arch.makeStructure(length=1000, width=1000, height=400)
+Structure2.ViewObject.Transparency = 80
+Draft.move(Structure2, FreeCAD.Vector(1500, 0, 0))
+FreeCAD.ActiveDocument.recompute()
+
+Rebar3 = StraightRebar.makeStraightRebar(50, ("Left Side", 20), 100, 100,
+                                         12, True, 5, "Vertical", Structure2, "Face4")
+Rebar3.ViewObject.ShapeColor = (0.9, 0.5, 0.0)
+
+Rebar4 = StraightRebar.makeStraightRebar(50, ("Left Side", 50), 100, 100,
+                                         12, True, 5, "Vertical", Structure2, "Face6")
+Rebar4.ViewObject.ShapeColor = (0.0, 0.5, 0.5)
+
+
+
+
+editStraightRebar(Rebar, f_cover, coverAlong, rt_cover, lb_cover,
+                  diameter, amount_spacing_check, amount_spacing_value, orientation,
+                  structure=None, facename=None)
+
+
+import StraightRebar
+
+StraightRebar.editStraightRebar(Rebar, 50, ("Top Side", 20), 100, 100,
+                                24, True, 7, "Horizontal")
+
+StraightRebar.editStraightRebar(Rebar2, 50, ("Top Side", 50), 100, 100,
+                                24, True, 7, "Horizontal")
+
+StraightRebar.editStraightRebar(Rebar3, 50, ("Right Side", 20), 100, 100,
+                                24, True, 7, "Vertical")
+
+StraightRebar.editStraightRebar(Rebar4, 50, ("Right Side", 50), 100, 100,
+                                24, True, 7, "Vertical")
+
+
+
+## Arch Rebar UShape
+
+Rebar = makeUShapeRebar(f_cover, b_cover, r_cover, l_cover,
+                        diameter, t_cover, rounding, amount_spacing_check, amount_spacing_value, orientation="Bottom",
+                        structure=None, facename=None)
+
+
+import FreeCAD, Arch, UShapeRebar
+
+Structure = Arch.makeStructure(length=1000, width=1000, height=400)
+Structure.ViewObject.Transparency = 80
+FreeCAD.ActiveDocument.recompute()
+
+Rebar = UShapeRebar.makeUShapeRebar(50, 20, 20, 20,
+                                    8, 50, 4, True, 6, "Bottom", Structure, "Face4")
+Rebar.ViewObject.ShapeColor = (0.9, 0.0, 0.0)
+
+Rebar2 = UShapeRebar.makeUShapeRebar(50, 50, 20, 20,
+                                     8, 50, 4, True, 6, "Bottom", Structure, "Face6")
+Rebar2.ViewObject.ShapeColor = (0.0, 0.0, 0.9)
+
+
+
+editUShapeRebar(Rebar, f_cover, b_cover, r_cover, l_cover,
+                diameter, t_cover, rounding, amount_spacing_check, amount_spacing_value, orientation,
+                structure=None, facename=None
+
+
+import UShapeRebar
+
+UShapeRebar.editUShapeRebar(Rebar, 50, 50, 20, 20,
+                            16, 20, 5, True, 5, "Top")
+
+UShapeRebar.editUShapeRebar(Rebar2, 70, 50, 20, 20,
+                            16, 70, 5, True, 5, "Top")
+
+
