@@ -1,0 +1,36 @@
+
+label = make_label(target_point=App.Vector(0, 0, 0),
+                   placement=App.Vector(30, 30, 0),
+                   target_object=None, subelements=None,
+                   label_type="Custom", custom_text="Label",
+                   direction="Horizontal", distance=-10,
+                   points=None)
+
+import FreeCAD as App
+import Draft
+
+doc = App.newDocument()
+
+rectangle = Draft.make_rectangle(4000, 1000)
+doc.recompute()
+
+p1 = App.Vector(-200, 1000, 0)
+place1 = App.Placement(App.Vector(-1000, 1300, 0), App.Rotation())
+
+label1 = Draft.make_label(p1, place1, target_object=rectangle, distance=500, label_type="Label")
+label1.ViewObject.TextSize = 200
+
+p2 = App.Vector(-200, 0, 0)
+place2 = App.Placement(App.Vector(-1000, -300, 0), App.Rotation())
+
+label2 = Draft.make_label(p2, place2, target_object=rectangle, distance=500, label_type="Custom",
+                          custom_text="Beware of the sharp edges")
+label2.ViewObject.TextSize = 200
+
+p3 = App.Vector(1000, 1200, 0)
+place3 = App.Placement(App.Vector(2000, 1800, 0), App.Rotation())
+
+label3 = Draft.make_label(p3, place3, target_object=rectangle, distance=-500, label_type="Area")
+label3.ViewObject.TextSize = 200
+
+doc.recompute()
